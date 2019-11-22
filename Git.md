@@ -13,7 +13,8 @@ git init
 git clone https://github.com/wencongsheng/git_demo.git
 ```
 
-### 添加文件
+### 添加文件 
+-f 强行添加 
 ```shell
 git add .
 ```
@@ -67,10 +68,16 @@ git stash drop stash@{0}
 git stash clear
 ```
 
+### 还原工作区 不删stash
+```
+git stash apply
+```
+
 ## 版本管理
 
 ### 查看日志
 --pretty=oneline 美化日志输出
+--graph --pretty=oneline --abbrev-commit
 
 ```
 git log [--pretty=oneline] 
@@ -136,7 +143,8 @@ git add .
 git commit -m "dev"
 git branch master // 切换回主分支，准备merge合并
 ```
-### 合并分支
+### 合并分支  
+--no-ff 不和并分支、可以单独出dev分支，bug分支
 ```
 git merge dev
 
@@ -154,6 +162,83 @@ git switch -c dev
 ```shell
 git switch master
 ```
+
+### 复制特定分支
+```shell
+git cherry-pick 000xxs
+```
+
+### 强制删除分支
+```shell
+git branch -D xxxx
+```
+
+### 原本分叉的提交现在变成一条直线了
+```shell
+git rebase
+```
+
+## 标签
+### 打标签
+```shell
+git tag v1.0
+``` 
+
+### 查看标签
+```shell
+git tag
+```
+
+### 打commit 标签
+```shell
+git tag v0.9 f52c633
+```
+
+### 查看标签
+```shell
+git show v0.9
+```
+
+### 便签加上说明
+```shell
+git tag -a v0.1 -m "version 0.1 released" 1094adb
+```
+
+### 删除标签
+```shell
+git tag -d v0.1
+```
+
+### 推送标签
+```shell
+git push origin v1.0
+```
+### 推送所有便签
+```shell
+git push origin --tags
+```
+
+### 删除已推送远程便签
+```
+1. git tag -d v0.9
+2. git push origin :refs/tags/v0.9
+
+```
+标签总是和某个commit挂钩。如果这个commit既出现在master分支，又出现在dev分支，那么在这两个分支上都可以看到这个标签
+
+
+## 团队工作流程
+1. git clone xxx
+2. git checkout -b dev origin/dev //需要那个分支
+3. git stash 缓存代码
+4. git pull 拉代码  
+5. git stash pop stash@{0}
+6. 解决冲突
+7. git add
+8. git commit
+
+更新代码步骤 4-8
+
 
 ## 名词解释
 
@@ -173,3 +258,11 @@ commit 提交的文件
 
 #### add 与commit 
 commit 只会提交已经add的文件
+
+
+## 忽略文件 .gitignore
+### 检查忽略文件
+```shell
+git check-ignore -v App.class
+```
+
