@@ -1,4 +1,6 @@
 # git_demo
 learn git
 
-stash=1
+
+stash=2
+
