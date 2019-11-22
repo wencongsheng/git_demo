@@ -1,6 +1,4 @@
 # git_demo
-learn git
+## 学习GIT
 
-
-stash=2
 
