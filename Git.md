@@ -75,3 +75,8 @@ git stash clear
 ```
 git log [--pretty=oneline] 
 ```
+
+### 查看不同文件
+```shell
+git diff README.md
+```
