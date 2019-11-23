@@ -45,7 +45,7 @@ git status
 
 ### 工作缓存
 ```
-git stash 
+git stash [save 'save message']
 ```
 
 ### 工作缓存列表
